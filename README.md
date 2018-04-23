@@ -94,22 +94,3 @@ To validate DNS settings may take several minutes.
 Validation process required twice. (for 'example.com' and '*.example.com')
 
 Everything OK, you can deploy server.key and server.crt to your web servers.
-
-
-## Automation
-
-Build lego DNS setup tool
-
-```
-$ go get -u github.com/hchonan/acme/cmd/dns-lego
-```
-
-### Google Cloud DNS example
-
-```
-$ export GOOGLE_APPLICATION_CREDENTIALS=<path/to/ServiceAccountKeyJSON>
-$ export GCE_PROJECT=<projectName>
-$ export LEGO_DNS_PROVIDER=gcloud
-
-$ wild-le renew -l dns-lego server.crt
-```
