@@ -13,6 +13,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strings"
 	"time"
 
 	"github.com/hchonan/acme"
@@ -219,10 +220,14 @@ func renew(q *cli.Context) error {
 		}
 
 		domain := q.String("d")
+		altDns := q.String("n")
+
+		DNSNames := []string{domain}
+		DNSNames = append(DNSNames, strings.Split(altDns, ",")...)
 
 		request = &x509.CertificateRequest{
 			Subject:  pkix.Name{CommonName: domain},
-			DNSNames: []string{domain},
+			DNSNames: DNSNames,
 		}
 
 		csr, err := x509.CreateCertificateRequest(rand.Reader, request, pri)
@@ -396,6 +401,9 @@ func main() {
 				},
 				cli.StringFlag{
 					Name: "domain, d",
+				},
+				cli.StringFlag{
+					Name: "dns-names, n",
 				},
 				cli.StringFlag{
 					Name: "dns-script, s",
