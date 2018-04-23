@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"strings"
 )
 
 type Continue interface {
@@ -43,7 +44,7 @@ func (p *Renew) DNSSetup(ctx context.Context, domain, text string) bool {
 
 	sc := bufio.NewScanner(os.Stdin)
 	if sc.Scan() {
-		if sc.Text() != "y" {
+		if strings.ToLower(sc.Text()) != "y" {
 			return false
 		}
 	} else {
