@@ -1,8 +1,16 @@
-# noumia/acme
+# hchonan/acme
 
 ACME v2 client for Golang
 
 Support Let's Encrypt issue wildcard certificate
+
+Modification of
+[noumia/acme](https://github.com/nomumia/acme)
+
+## Acknowledgements
+
+Original ACME v2 client imprementation : 
+[noumia/acme](https://github.com/nomumia/acme)
 
 
 ## How to use
@@ -10,7 +18,7 @@ Support Let's Encrypt issue wildcard certificate
 Build acme tool
 
 ```
-$ go get -u github.com/noumia/acme/cmd/wild-le
+$ go get -u github.com/hchonan/acme/cmd/wild-le
 ```
 
 ### Regiter your account
@@ -93,7 +101,7 @@ Everything OK, you can deploy server.key and server.crt to your web servers.
 Build lego DNS setup tool
 
 ```
-$ go get -u github.com/noumia/acme/cmd/dns-lego
+$ go get -u github.com/hchonan/acme/cmd/dns-lego
 ```
 
 ### Google Cloud DNS example
