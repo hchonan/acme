@@ -26,7 +26,7 @@ type Directory struct {
 	NewOrder   string
 	KeyChange  string
 
-	Meta map[string]string
+	Meta map[string]interface{} // TODO: Describe detail later
 }
 
 type Account struct {
