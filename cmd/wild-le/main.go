@@ -22,6 +22,9 @@ import (
 
 const EP = "https://acme-v02.api.letsencrypt.org/directory"
 
+var version string
+var buildHash string
+
 /* */
 
 func readKey(path string) (crypto.Signer, error) {
@@ -354,6 +357,11 @@ func main() {
 
 	app.Name = "wild let's encrypt"
 	app.Usage = "ACMEv2 client tool"
+	app.Version = fmt.Sprintf("%s build %s", version, buildHash)
+	app.Authors = []cli.Author{
+		{Name: "Hiroshi Chonan", Email: "chonan@pid0.org"},
+		{Name: "Noumia (https://github.com/noumia/, Origial Author)"},
+	}
 
 	app.Commands = append(app.Commands,
 		cli.Command{
