@@ -5,12 +5,12 @@ ACME v2 client for Golang
 Support Let's Encrypt issue wildcard certificate
 
 Modification of
-[noumia/acme](https://github.com/nomumia/acme)
+[noumia/acme](https://github.com/noumia/acme)
 
 ## Acknowledgements
 
 Original ACME v2 client imprementation : 
-[noumia/acme](https://github.com/nomumia/acme)
+[noumia/acme](https://github.com/noumia/acme)
 
 
 ## How to use
