@@ -31,11 +31,12 @@ fmt:
 build: $(TARGETS)
 
 clean:
-	-rm -rf ./dst
+	-rm -f ./dst/bin/wild-le
+	-rm -f ./dst/bin/dns
 
-dst/bin/wild-le: cmd/wild-le
-	$(GO_BUILD) -o $@ $(GO_LDFLAGS) ./$?
+dst/bin/wild-le: cmd/wild-le acme.go crypto.go
+	$(GO_BUILD) -o $@ $(GO_LDFLAGS) ./cmd/wild-le
 
-dst/bin/dns: cmd/dns
-	$(GO_BUILD) -o $@ $(GO_LDFLAGS) ./$?
+dst/bin/dns: cmd/dns acme.go crypto.go
+	$(GO_BUILD) -o $@ $(GO_LDFLAGS) ./cmd/dns
 
