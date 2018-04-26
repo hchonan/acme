@@ -123,7 +123,7 @@ func account(q *cli.Context) error {
 		return err
 	}
 
-	fmt.Printf("TOS: %q\n", p.Directory.Meta["termsOfService"])
+	fmt.Printf("TOS: %q\n", p.Directory.Meta.TermsOfService)
 
 	/* */
 
