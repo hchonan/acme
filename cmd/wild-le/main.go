@@ -20,7 +20,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-const EP = "https://acme-v02.api.letsencrypt.org/directory"
+const endPoint = "https://acme-v02.api.letsencrypt.org/directory"
 
 var version string
 var buildHash string
@@ -370,7 +370,7 @@ func main() {
 			Flags: []cli.Flag{
 				cli.StringFlag{
 					Name:  "end-point",
-					Value: EP,
+					Value: endPoint,
 				},
 				cli.StringFlag{
 					Name:  "account-key, a",
@@ -393,7 +393,7 @@ func main() {
 			Flags: []cli.Flag{
 				cli.StringFlag{
 					Name:  "end-point",
-					Value: EP,
+					Value: endPoint,
 				},
 				cli.StringFlag{
 					Name:  "account-key, a",
