@@ -223,10 +223,10 @@ func renew(q *cli.Context) error {
 		}
 
 		domain := q.String("d")
-		altDns := q.String("n")
+		altDNS := q.String("n")
 
 		DNSNames := []string{domain}
-		DNSNames = append(DNSNames, strings.Split(altDns, ",")...)
+		DNSNames = append(DNSNames, strings.Split(altDNS, ",")...)
 
 		request = &x509.CertificateRequest{
 			Subject:  pkix.Name{CommonName: domain},
