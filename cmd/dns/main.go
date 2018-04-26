@@ -14,7 +14,7 @@ import (
 
 func process(cli *dns.Service, domain string, text string) error {
 	if len(domain) == 0 {
-		return errors.New("domainName is empty.")
+		return errors.New("domainName is empty")
 	}
 
 	fqdn := domain + "."
@@ -23,11 +23,11 @@ func process(cli *dns.Service, domain string, text string) error {
 	managedZone := os.Getenv("GCE_MANAGED_ZONE")
 
 	if len(project) == 0 {
-		return errors.New("GCE_PROJECT is empty.")
+		return errors.New("GCE_PROJECT is empty")
 	}
 
 	if len(managedZone) == 0 {
-		return errors.New("GCE_MANAGED_ZONE is empty.")
+		return errors.New("GCE_MANAGED_ZONE is empty")
 	}
 
 	list, err := cli.ResourceRecordSets.List(project, managedZone).Name(fqdn).Type("TXT").Do()
