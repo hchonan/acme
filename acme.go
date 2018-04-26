@@ -124,7 +124,7 @@ func NewClient(key crypto.Signer) *Client {
 	return cli
 }
 
-func (p *Client) getJson(res *http.Response, q interface{}) error {
+func (p *Client) getJSON(res *http.Response, q interface{}) error {
 	by, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		return err
@@ -157,7 +157,7 @@ func (p *Client) Describe(ctx context.Context, url string) error {
 	}
 
 	q := &Directory{}
-	if err := p.getJson(res, q); err != nil {
+	if err := p.getJSON(res, q); err != nil {
 		return err
 	}
 
@@ -373,7 +373,7 @@ func locationHeader(res *http.Response) (string, error) {
 
 func (p *Client) getAccount(res *http.Response) (*Account, error) {
 	q := &Account{}
-	if err := p.getJson(res, q); err != nil {
+	if err := p.getJSON(res, q); err != nil {
 		return nil, err
 	}
 
@@ -414,7 +414,7 @@ func (p *Client) LookupAccount(ctx context.Context) (*Account, error) {
 
 func (p *Client) getOrder(res *http.Response) (*Order, error) {
 	q := &Order{}
-	if err := p.getJson(res, q); err != nil {
+	if err := p.getJSON(res, q); err != nil {
 		return nil, err
 	}
 
@@ -457,7 +457,7 @@ func (p *Client) GetOrder(ctx context.Context, url string) (*Order, error) {
 
 func (p *Client) getAuthorization(res *http.Response) (*Authorization, error) {
 	q := &Authorization{}
-	if err := p.getJson(res, q); err != nil {
+	if err := p.getJSON(res, q); err != nil {
 		return nil, err
 	}
 
@@ -497,7 +497,7 @@ func (p *Client) PostChallenge(ctx context.Context, url string, req map[string]i
 	defer res.Body.Close()
 
 	q := &Challenge{}
-	if err := p.getJson(res, q); err != nil {
+	if err := p.getJSON(res, q); err != nil {
 		return nil, err
 	}
 
@@ -513,7 +513,7 @@ func (p *Client) PostFinalize(ctx context.Context, url string, req map[string]in
 	defer res.Body.Close()
 
 	q := &Order{}
-	if err := p.getJson(res, q); err != nil {
+	if err := p.getJSON(res, q); err != nil {
 		return nil, err
 	}
 
