@@ -17,16 +17,21 @@ import (
 	"time"
 )
 
-/* */
-
+// Directory describes ACME Directory Fields.
 type Directory struct {
-	NewAccount string
-	NewNonce   string
-	RevokeCert string
-	NewOrder   string
-	KeyChange  string
+	NewAccount string `json:"newAccount"`
+	NewNonce   string `json:"newNonce"`
+	RevokeCert string `json:"revokeCert"`
+	NewOrder   string `json:"newOrder"`
+	KeyChange  string `json:"keyChange"`
+	Meta       Meta   `json:"meta"`
+}
 
-	Meta map[string]interface{} // TODO: Describe detail later
+// Meta describes ACME Directory Metadata Fields.
+type Meta struct {
+	CaaIdentities  []string `json:"caaIdentities"`
+	TermsOfService string   `json:"termsOfService"`
+	Website        string   `json:"website"`
 }
 
 type Account struct {
