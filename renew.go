@@ -108,7 +108,7 @@ func (p *Renew) doRenew(ctx context.Context, domains []string) error {
 		return err
 	}
 
-	if order.Status != "pending" {
+	if order.Status != "pending" && order.Status != "ready" {
 		return errors.New("order.status")
 	}
 
