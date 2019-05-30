@@ -193,7 +193,9 @@ func (p *Renew) doAuthz(ctx context.Context, aid string) error {
 		if i%p.ChaLevel == 0 {
 			ms += p.Wait
 		}
-		Sleep(ctx, ms)
+		if err := Sleep(ctx, ms); err != nil {
+			return err
+		}
 
 		authz, err := p.cli.GetAuthorization(ctx, aid)
 		if err != nil {
@@ -240,7 +242,9 @@ func (p *Renew) doChallenge(ctx context.Context, authz *Authorization, cha *Chal
 		if i%p.DNSLevel == 0 {
 			ms += p.Wait
 		}
-		Sleep(ctx, ms)
+		if err := Sleep(ctx, ms); err != nil {
+			return err
+		}
 
 		ts, err := net.LookupTXT(domain)
 		if err != nil {
@@ -274,7 +278,9 @@ func (p *Renew) doFinalize(ctx context.Context, order *Order, oid string) error 
 	/* */
 
 	for i := 0; i < p.FinRetry; i++ {
-		Sleep(ctx, p.Wait)
+		if err := Sleep(ctx, p.Wait); err != nil {
+			return err
+		}
 
 		order, err := p.cli.GetOrder(ctx, oid)
 		if err != nil {
